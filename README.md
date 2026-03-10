@@ -82,7 +82,8 @@ DeviceLogonEvents
 | order by TimeGenerated asc
 ```
 
-> *[screenshot: flag1_logon_events.png]*
+> *<img width="1291" height="473" alt="image" src="https://github.com/user-attachments/assets/472c3268-92f0-4c55-ab4b-75a9005c497a" />
+*
 
 The first successful logon from an external public IP came in at 18:36:18 UTC. A Network logon immediately followed by an Unlock event confirms the attacker took active control of the desktop session — not just a background auth. Everything after this timestamp under kenji.sato is attacker-controlled.
 
