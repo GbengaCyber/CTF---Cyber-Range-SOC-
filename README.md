@@ -3,7 +3,7 @@
 
 **Portfolio Summary**
 
-Investigated a corporate espionage breach at a trading company using Microsoft Defender for Endpoint and KQL. Traced a 33-minute attack — from stolen RDP credentials to data exfiltration via Discord — across 20 investigation flags covering the full MITRE ATT&CK chain. Assessed that the attack, which cost the company a 6-year contract, could have been prevented with ~$1,400/year in MFA licensing. Identified two post-exfiltration persistence mechanisms that would have survived standard incident response.
+Investigated a corporate espionage breach at a trading company using Microsoft Defender for Endpoint and KQL. Traced a 33-minute attack - from stolen RDP credentials to data exfiltration via Discord - across 20 investigation flags covering the full MITRE ATT&CK chain. Assessed that the attack, which cost the company a 6-year contract, could have been prevented with ~$1,400/year in MFA licensing. Identified two post-exfiltration persistence mechanisms that would have survived standard incident response.
 
 ---
 
