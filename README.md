@@ -9,8 +9,7 @@
 ---
 
 ## Background
-
-A competitor undercut Azuki Import/Export's 6-year shipping contract by exactly 3%. Shortly after, supplier pricing data appeared on underground forums. This investigation traces the full attack on the company's IT admin workstation using Microsoft Defender for Endpoint telemetry and KQL queries in Microsoft Sentinel.
+"Investigated a corporate espionage breach at a trading company using Microsoft Defender for Endpoint and KQL. Traced a 33-minute attack — from stolen RDP credentials to data exfiltration via Discord — across 20 investigation flags covering the full MITRE ATT&CK chain. Assessed that the attack, which cost the company a 6-year contract, could have been prevented with ~$1,400/year in MFA licensing. Identified two post-exfiltration persistence mechanisms that would have survived standard incident response."
 
 ---
 
