@@ -1,3 +1,64 @@
+
+## Business Impact & Risk Assessment
+
+**Portfolio Summary**
+
+Investigated a corporate espionage breach at a trading company using Microsoft Defender for Endpoint and KQL. Traced a 33-minute attack — from stolen RDP credentials to data exfiltration via Discord — across 20 investigation flags covering the full MITRE ATT&CK chain. Assessed that the attack, which cost the company a 6-year contract, could have been prevented with ~$1,400/year in MFA licensing. Identified two post-exfiltration persistence mechanisms that would have survived standard incident response.
+
+---
+
+### Business Context
+
+Azuki Import/Export lost a 6-year shipping contract after a competitor undercut their pricing by exactly 3% — the kind of precision that signals insider knowledge, not coincidence. Shortly after, supplier pricing data appeared on underground forums. This investigation confirmed a targeted corporate espionage attack. The attacker used no custom malware — only native Windows tools — making this harder to detect with signature-based controls.
+
+---
+
+### Business Impact Assessment
+
+| Impact Category | Assessment |
+|---|---|
+| Lost 6-year shipping contract | Primary revenue stream compromised |
+| Supplier pricing data on dark web | Ongoing competitive disadvantage |
+| Full credential dump of all accounts | Every system in the company potentially accessible |
+| Backdoor account left behind | Continued access risk even after discovery |
+| All event logs wiped | Forensic and legal evidence destroyed |
+
+Using the IBM Cost of a Data Breach Report (2024) benchmark and adjusting for a small business of ~23 employees, conservative estimated losses land between **$500K–$1.5M** including contract loss, legal exposure, remediation, and reputational damage.
+
+---
+
+### Risk Assessment
+
+| Risk | Severity | Reason |
+|---|---|---|
+| Compromised IT Admin account (kenji.sato) | Critical | Highest-privilege account — zero escalation needed |
+| No MFA on RDP | Critical | Single stolen credential = full network access |
+| Defender exclusions added in 13 minutes | High | Attacker had unchecked rights to modify security tools |
+| C2 over port 443 (HTTPS) | High | Unblockable without disrupting all web traffic |
+| Discord used as exfiltration channel | High | Legitimate platform — not flagged by DLP tools |
+| Backdoor account "support" created | High | Attack persists even after password reset |
+| Event logs cleared | Medium | Mitigated by cloud telemetry — but highlights log centralisation gap |
+
+---
+
+### Cost-Benefit of Preventative Controls
+
+| Control | Estimated Annual Cost | Risk Mitigated |
+|---|---|---|
+| MFA on RDP / VPN | ~$1,400/yr (23 users) | Would have stopped this attack entirely at initial access |
+| Privileged Access Management (PAM) | ~$10–15K/yr for SMB | Limits damage from a compromised admin account |
+| SIEM alerting on Defender exclusion changes | Included in M365 E5 | Would have triggered alert at 18:49 — 20 minutes into attack |
+| DLP blocking Discord uploads | ~$5K/yr | Would have blocked the exfiltration channel |
+| Log centralisation via MDE (already partial) | Low — leverage existing tools | Ensured logs survived despite wevtutil clearing |
+
+**Cost of prevention: ~$20–25K/year**
+**Estimated cost of breach: $500K–$1.5M+**
+**ROI of prevention: ~20:1 to 60:1**
+
+---
+
+
+
 # SOC Investigation: Azuki Import/Export — Corporate Espionage
 
 **Platform:** Microsoft Defender for Endpoint + Microsoft Sentinel (KQL)  
@@ -6,10 +67,6 @@
 **Device:** AZUKI-SL (IT Admin Workstation)  
 **Status:** Complete — 20/20 flags resolved
 
----
-
-## Background
-"Investigated a corporate espionage breach at a trading company using Microsoft Defender for Endpoint and KQL. Traced a 33-minute attack — from stolen RDP credentials to data exfiltration via Discord — across 20 investigation flags covering the full MITRE ATT&CK chain. Assessed that the attack, which cost the company a 6-year contract, could have been prevented with ~$1,400/year in MFA licensing. Identified two post-exfiltration persistence mechanisms that would have survived standard incident response."
 
 ---
 
